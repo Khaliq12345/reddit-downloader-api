@@ -3,3 +3,4 @@ dotenv
 fastapi
 fastapi-cli
 redvid
+uvicorn

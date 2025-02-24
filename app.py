@@ -1,6 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import JSONResponse
 import utils
+import uvicorn
 
 app = FastAPI()
 
@@ -17,3 +18,6 @@ def download_video_api(url: str, background_tasks: BackgroundTasks):
 @app.get("/task/{id}")
 def get_task_api(id: int):
     return utils.get_task(id)
+
+if __name__ == '__main__':
+    uvicorn.run(app, host="0.0.0.0")
