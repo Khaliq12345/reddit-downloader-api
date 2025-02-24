@@ -8,6 +8,8 @@ load_dotenv()
 
 ACCESS_KEY = os.getenv('S3_ACCESS_KEY')
 ACCESS_SECRET = os.getenv('S3_SECRET_KEY')
+PROXY_USERNAME = os.getenv('PROXY_USERNAME')
+PROXY_PASSWORD = os.getenv('PROXY_PASSWORD')
 
 def session():
     return boto3.Session(
@@ -62,8 +64,8 @@ def send_to_s3(output: str, session: boto3.Session = session()):
     return url
 
 def video_downloader(url: str):
-    username = 'sp81iy5fpi'
-    password = 'hv0Zzv7=7yYtE9xxPo'
+    username = PROXY_USERNAME
+    password = PROXY_PASSWORD
     proxy = f"http://{username}:{password}@gate.smartproxy.com:10001"
     proxies = {
         'http': proxy,
